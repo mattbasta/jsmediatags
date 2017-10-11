@@ -226,6 +226,11 @@ class ID3v2FrameReader {
       var flags = header.flags;
       var frameSize = header.size;
       var frameDataOffset = offset + header.headerSize;
+
+      if (frameDataOffset + frameSize > id3header.size) {
+        break;
+      }
+
       var frameData = data;
 
       // console.log(offset, frameId, header.size + header.headerSize, flags && flags.format.unsynchronisation);
